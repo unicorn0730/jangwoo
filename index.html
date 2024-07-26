@@ -3,43 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jack's Personal Webpage</title>
+    <title>Days Countdown</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #ecf0f3;
-            margin: 0;
-            padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
+            background-color: #f0f0f0;
         }
-        .container {
-            background-color: #ecf0f3;
-            border-radius: 20px;
-            box-shadow: 7px 7px 15px #babecc, -7px -7px 15px #ffffff;
-            padding: 30px;
-            max-width: 400px;
-            text-align: center;
-        }
-        h1 {
+        #countdown {
             font-size: 2em;
-            color: #333;
-        }
-        p {
-            font-size: 1.2em;
-            color: #666;
-            line-height: 1.5em;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>About Me</h1>
-        <p>
-            Hi, I'm Jack. I'm a high school student with a passion for learning and exploring new things. I enjoy spending my time working on school projects, discovering new hobbies, and connecting with friends. Welcome to my personal webpage!
-        </p>
-    </div>
+    <div id="countdown"></div>
+
+    <script>
+        function calculateDaysLeft(targetDate) {
+            const currentDate = new Date();
+            const target = new Date(targetDate);
+            const timeDiff = target - currentDate;
+            const daysLeft = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
+            return daysLeft;
+        }
+
+        function updateCountdown() {
+            const targetDate = "2024-11-14";
+            const daysLeft = calculateDaysLeft(targetDate);
+            document.getElementById('countdown').innerText = `${daysLeft} days left until ${targetDate}`;
+        }
+
+        updateCountdown();
+    </script>
 </body>
 </html>
